@@ -1,0 +1,107 @@
+@startuml
+class main.java.ch.gibb_iet.model.Feature {
+- String name
++ <<Create>> Feature(String)
++ String getName()
++ void setName(String)
+}
+
+
+class main.java.ch.gibb_iet.model.Illustrator {
+- String name
++ <<Create>> Illustrator(String)
++ String getName()
++ void setName(String)
+}
+
+
+class main.java.ch.gibb_iet.model.Person {
+- String firstname
+- String lastname
+- LocalDate birthyear
++ <<Create>> Person(String,String,LocalDate)
++ String getFirstname()
++ void setFirstname(String)
++ String getLastname()
++ void setLastname(String)
++ LocalDate getBirthyear()
++ void setBirthyear(LocalDate)
+}
+
+
+class main.java.ch.gibb_iet.model.Book {
+- int pages
+- Person illustrator
++ <<Create>> Book(String,Person,Date,int,Person)
++ int getPages()
++ Person getIllustrator()
++ void setPages(int)
++ void setIllustrator(Person)
+}
+
+
+class main.java.ch.gibb_iet.model.CD {
+- Person artist
+- List<Track> tracks
++ <<Create>> CD(String,Person,Date,Person,List<Track>)
++ Person getArtist()
++ void setArtist(Person)
++ List<Track> getTracks()
++ void setTracks(List<Track>)
+}
+
+
+abstract class main.java.ch.gibb_iet.model.Medium {
+- String title
+- Person author
+- Date releaseDate
++ <<Create>> Medium(String,Person,Date)
++ String getTitle()
++ void setTitle(String)
++ Person getAuthor()
++ void setAuthor(Person)
++ Date getReleaseDate()
++ void setReleaseDate(Date)
+}
+
+
+class main.java.ch.gibb_iet.model.Library {
+- List<Medium> mediums
++ void addMedium(Medium)
++ void removeMedium(Medium)
++ List<Medium> getMedias()
++ void setMedias(List<Medium>)
+}
+
+
+class main.java.ch.gibb_iet.model.Track {
+- String name
+- int duration
+- List<Person> features
++ <<Create>> Track(String,int,List<Person>)
++ String getName()
++ void setName(String)
++ int getDuration()
++ void setDuration(int)
++ List<Person> getFeatures()
++ void setFeatures(List<Person>)
+}
+
+
+class main.java.ch.gibb_iet.model.Movie {
+- Person director
+- int duration
++ <<Create>> Movie(String,Person,Date,Person,int)
++ Person getDirector()
++ void setDirector(Person)
++ int getDuration()
++ void setDuration(int)
+}
+
+
+
+
+main.java.ch.gibb_iet.model.Medium <|-- main.java.ch.gibb_iet.model.Book
+main.java.ch.gibb_iet.model.Medium <|-- main.java.ch.gibb_iet.model.CD
+main.java.ch.gibb_iet.model.Medium <|-- main.java.ch.gibb_iet.model.Movie
+@enduml
